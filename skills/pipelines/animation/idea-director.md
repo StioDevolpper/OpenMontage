@@ -12,6 +12,7 @@ Do not use this pipeline when the project is really footage-led with a few overl
 - `skills/creative/animation-pipeline.md`
 - `skills/creative/storytelling.md`
 - `skills/creative/ink-theater.md` — for hand-drawn **ink "doodle"** briefs: a character that draws itself and performs, or a deadpan contraption explainer (Ink Theater engine + Ink Puppet mocap; command `/ink-art`). A stick/pencil character that walks or dances belongs in the `character-animation` pipeline.
+- `skills/creative/lemo-opuscar.md` — for briefs that want one of 59 **code-drawn film styles** (watercolor, ink wash, Ukiyo-e, risograph, blueprint, pixel RPG…): picture rendered by the Lemo-Opuscar engine, voice/mix/subtitles by OpenMontage (command `/lemo-film`).
 
 ## Process
 

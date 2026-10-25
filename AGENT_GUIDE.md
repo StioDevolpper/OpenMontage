@@ -646,6 +646,10 @@ For custom, atelier, brand, launch, or hero work, read `skills/meta/taste-direct
 
 For any brief that wants a **hand-drawn ink doodle** look — "a sketch that comes to life", "a pencil / stick figure that walks or dances", "a little character that acts out the idea", whiteboard-doodle explainers — use the **Ink Theater** engine + **Ink Puppet** mocap system (`skills/creative/ink-theater.md`, `ink-theater/README.md`). It is a **style + reusable engine, not a new pipeline**: illustration / contraption pieces run on the `animation` pipeline; a mocap character (draws itself → walks / dances / waves via `InkPuppet.choreograph([...])`) runs on `character-animation`. Cross-tool entry points: **`/ink-art`** (create a vector doodle from scratch) and **`/animated-drawing`** (animate a *supplied* drawing with mocap — raster; `skills/creative/animated-drawing.md`). Never hand-tune character motion — the agent only chooses named mocap clips.
 
+### Film styles drawn in code → Lemo-Opuscar
+
+When a brief wants a strong **hand-made or print look** that `styles/*.yaml` doesn't cover — watercolor journal, ink wash, Ukiyo-e, woodcut, risograph, paper-cut, blueprint, pixel RPG, and ~50 more — offer the **Lemo-Opuscar** style library as an option at proposal, beside Remotion and HyperFrames (`skills/creative/lemo-opuscar.md`). It is a **picture engine + style library, not a pipeline**: it renders the silent picture frame by frame from code (no image/video generation, offline, free); OpenMontage keeps the voice, music, `audio_mixer` mix and subtitles. State its cost (a hand-written page per film) and let the user choose. Entry point: **`/lemo-film`**.
+
 ## Layer Map
 
 OpenMontage has three instruction layers:

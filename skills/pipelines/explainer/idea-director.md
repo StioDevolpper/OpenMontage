@@ -12,6 +12,7 @@ This is the most important stage — a weak brief produces a weak video regardle
 |-------|----------|---------|
 | Schema | `schemas/artifacts/brief.schema.json` | Artifact validation |
 | Playbooks | `styles/*.yaml` | Visual/audio style options |
+| Styles (optional) | `skills/creative/lemo-opuscar.md` | 59 code-drawn film styles (watercolor, ink wash, print…) to offer beside the playbooks |
 | Skills | `skills/meta/skill-creator.md` | If you encounter unfamiliar domain |
 
 ## Process

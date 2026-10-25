@@ -1,7 +1,7 @@
 # Lemo-Opuscar — film styles drawn in code (creative skill)
 
 > Library: `~/Projects277/lemo-opuscar` (external clone, MIT code / CC BY 4.0 demos) · Picture: Canvas/WebGL page rendered frame by frame in headless Chrome · Sound, mix, subtitles: OpenMontage
-> Validated on this machine with `projects/spring-bean-aquarelle/` (20 s, Watercolor Brush, cloned FR voice).
+> Validated on this machine with `projects/spring-bean-aquarelle/` (20 s, Watercolor Brush, cloned FR voice). Illustrated write-up (diagrams, frames, the two ffmpeg 4.4 mixer fixes): `docs/lemo-opuscar-integration.md`.
 
 **What it is:** a library of 59 film styles (watercolor, ink wash, Ukiyo-e, risograph, blueprint, Swiss motion graphics, LiDAR survey, 16-bit pixel RPG…). Each style has a `STYLE.md` (the fixed look, colour, type, motion, camera grammar, sound palette) and a demo built on a reusable engine (brush strokes, rigs, shaders). No image or video generation: every frame is code. It is a **picture engine + style library, not a pipeline**: OpenMontage keeps the pipeline, the voice, the music, the mix and the subtitles.
 

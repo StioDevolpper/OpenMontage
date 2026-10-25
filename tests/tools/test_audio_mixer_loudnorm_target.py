@@ -22,7 +22,7 @@ def _filter(inputs: dict) -> str:
 def test_default_target_is_podcast_minus_16():
     f = _filter({})
     assert "I=-16.0" in f or "I=-16" in f
-    assert f.startswith("[premix]loudnorm=")
+    assert f.startswith("[premix]aformat=channel_layouts=mono|stereo,loudnorm=")
     assert f.endswith("[out]")
 
 

@@ -226,7 +226,13 @@ class AudioMixer(BaseTool):
         target = max(-40.0, min(0.0, target))
         # loudnorm upsamples to 192 kHz internally; resample back so the mix
         # lands at a delivery rate instead of a 4x-oversized file.
-        return f"[{in_label}]loudnorm=I={target}:LRA=11:TP=-1.5,aresample=48000[{out_label}]"
+        # The aformat pins a layout first (keeping the channel count): on
+        # ffmpeg 4.4, layout-less input (plain mono WAV) through loudnorm +
+        # aresample fails with "Cannot select channel layout".
+        return (
+            f"[{in_label}]aformat=channel_layouts=mono|stereo,"
+            f"loudnorm=I={target}:LRA=11:TP=-1.5,aresample=48000[{out_label}]"
+        )
 
     @staticmethod
     def _limiter_filter(in_label: str, out_label: str) -> str:

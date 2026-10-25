@@ -625,8 +625,12 @@ class AudioMixer(BaseTool):
             release = duck_params.get("release_ms", 500)
             music_vol = duck_params.get("music_volume_during_speech", 0.15)
 
+            # After a volume filter, ffmpeg 4.4 can't negotiate sidechaincompress's
+            # channel layout ("No channel layout for input 1"): pin the music's
+            # layout to mono or stereo, which keeps its own channel count.
             filter_parts.append(
-                f"{music_in}[speech_key]sidechaincompress="
+                f"{music_in}aformat=channel_layouts=mono|stereo[music_fmt];"
+                f"[music_fmt][speech_key]sidechaincompress="
                 f"threshold=0.02:ratio=9:attack={attack}:release={release}:"
                 f"level_sc=1:mix=0.9[ducked_music];"
                 f"[ducked_music]volume={music_vol * 3}[music_out]"

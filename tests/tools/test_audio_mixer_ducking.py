@@ -87,3 +87,31 @@ def test_full_mix_multi_narration_plus_music_with_ducking(tmp_path):
 
     assert result.success is True, result.error
     assert out.exists() and _has_audio(out)
+
+
+def test_full_mix_mono_speech_plus_stereo_music_with_volume(tmp_path):
+    # ffmpeg 4.4 couldn't negotiate sidechaincompress's layout after the
+    # music's volume filter: "No channel layout for input 1".
+    speech = tmp_path / "speech.wav"
+    music = tmp_path / "music.wav"
+    _sine(speech, 440, 2)
+    subprocess.run(
+        ["ffmpeg", "-y", "-f", "lavfi", "-i", "sine=frequency=220:duration=3", "-ac", "2", str(music)],
+        capture_output=True, check=True, timeout=30,
+    )
+    out = tmp_path / "mixed_stereo_music.wav"
+
+    result = AudioMixer().execute(
+        {
+            "operation": "full_mix",
+            "tracks": [
+                {"path": str(speech), "role": "speech", "start_seconds": 0.5},
+                {"path": str(music), "role": "music", "volume": 0.5},
+            ],
+            "ducking": {"enabled": True},
+            "output_path": str(out),
+        }
+    )
+
+    assert result.success is True, result.error
+    assert out.exists() and _has_audio(out)
